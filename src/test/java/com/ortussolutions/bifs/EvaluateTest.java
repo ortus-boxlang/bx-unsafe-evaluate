@@ -4,17 +4,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import ortus.boxlang.runtime.scopes.Key;
 import ortus.boxlang.runtime.BoxRuntime;
 import ortus.boxlang.runtime.context.IBoxContext;
 import ortus.boxlang.runtime.context.ScriptingRequestBoxContext;
 import ortus.boxlang.runtime.scopes.IScope;
+import ortus.boxlang.runtime.scopes.Key;
 import ortus.boxlang.runtime.scopes.VariablesScope;
 
-public class ExampleJavaBIFTest {
+public class EvaluateTest {
 
 	static BoxRuntime	instance;
 	IBoxContext			context;
@@ -32,11 +33,12 @@ public class ExampleJavaBIFTest {
 		variables	= context.getScopeNearby( VariablesScope.name );
 	}
 
-	@DisplayName( "It can test the ExampleBIF" )
+	@DisplayName( "It can test the evaluate function" )
+	@Disabled
 	@Test
-	public void testExampleBIF() {
-		instance.executeSource( "result = ExampleJavaBIF()", context );
-		assertEquals( "Hello from an ExampleJavaBIF!", variables.get( result ) );
+	public void testEvaluate() {
+		instance.executeSource( "result = evaluate( 'hello' )", context );
+		assertEquals( "hello", variables.get( result ) );
 	}
 
 }

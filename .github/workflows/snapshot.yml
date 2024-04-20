@@ -1,4 +1,4 @@
-name: @MODULE_NAME@ Snapshots
+name: Unsafe Evaluate Snapshots
 
 on:
   push:

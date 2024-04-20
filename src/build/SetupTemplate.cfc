@@ -39,7 +39,7 @@ component {
 		command( "tokenReplace" )
 			.params(
 				path        = "/#variables.cwd#/**",
-				token       = "@MODULE_NAME@",
+				token       = "Unsafe Evaluate",
 				replacement = moduleName
 			)
 			.run();
@@ -47,7 +47,7 @@ component {
 		command( "tokenReplace" )
 			.params(
 				path        = "/#variables.cwd#/**",
-				token       = "@MODULE_SLUG@",
+				token       = "bx-unsafe-evaluate",
 				replacement = moduleSlug
 			)
 			.run();
@@ -55,7 +55,7 @@ component {
 		command( "tokenReplace" )
 			.params(
 				path        = "/#variables.cwd#/**",
-				token       = "@MODULE_DESCRIPTION@",
+				token       = "Implements the unsafe evaluate bif",
 				replacement = moduleDescription
 			)
 			.run();
