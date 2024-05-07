@@ -1,10 +1,9 @@
-package com.ortussolutions.bifs;
+package ortus.boxlang.modules.evaluate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -34,11 +33,22 @@ public class EvaluateTest {
 	}
 
 	@DisplayName( "It can test the evaluate function" )
-	@Disabled
 	@Test
 	public void testEvaluate() {
-		instance.executeSource( "result = evaluate( 'hello' )", context );
-		assertEquals( "hello", variables.get( result ) );
+		// @formatter:off
+		instance.executeSource(
+			"""
+			first = "boxlang"
+			second = "BoxLang"
+			op = "eq"
+
+			result = evaluate( "first #op# second" );
+			""",
+			context
+		);
+		// @formatter:on
+
+		assertEquals( true, variables.get( result ) );
 	}
 
 }

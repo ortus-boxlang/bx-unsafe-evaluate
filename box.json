@@ -3,19 +3,21 @@
 	"version": "@build.version@+@build.number@",
 	"location": "https://downloads.ortussolutions.com/ortussolutions/boxlang-modules/bx-unsafe-evaluate/@build.version@/bx-unsafe-evaluate-@build.version@.zip",
 	"author": "Ortus Solutions",
-	"homepage": "https://github.com/boxlang-modules/bx-unsafe-evaluate",
-	"documentation": "https://github.com/boxlang-modules/bx-unsafe-evaluate",
+	"homepage": "https://github.com/ortus-boxlang/bx-unsafe-evaluate",
+	"documentation": "https://github.com/ortus-boxlang/bx-unsafe-evaluate",
 	"repository": {
 		"type": "git",
-		"URL": "https://github.com/boxlang-modules/bx-unsafe-evaluate"
+		"URL": "https://github.com/ortus-boxlang/bx-unsafe-evaluate"
 	},
-	"bugs": "https://github.com/boxlang-modules/bx-unsafe-evaluate/issues",
+	"bugs": "https://github.com/ortus-boxlang/bx-unsafe-evaluate/issues",
 	"slug": "bx-unsafe-evaluate",
 	"shortDescription": "Module template for BoxLang modules",
 	"type": "boxlang-modules",
-	"keywords": ["boxlang"],
+	"keywords": [
+		"boxlang"
+	],
 	"boxlang": {
-		"minimumVersion": "5.0.0",
+		"minimumVersion": "1.0.0",
 		"moduleName": "evaluate"
 	},
 	"private": false,

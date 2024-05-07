@@ -3,7 +3,6 @@ package ortus.boxlang.modules.evaluate.bifs;
 import ortus.boxlang.runtime.bifs.BIF;
 import ortus.boxlang.runtime.bifs.BoxBIF;
 import ortus.boxlang.runtime.context.IBoxContext;
-import ortus.boxlang.runtime.dynamic.ExpressionInterpreter;
 import ortus.boxlang.runtime.scopes.ArgumentsScope;
 import ortus.boxlang.runtime.scopes.Key;
 import ortus.boxlang.runtime.types.Argument;
@@ -39,7 +38,7 @@ public class Evaluate extends BIF {
 	public Object _invoke( IBoxContext context, ArgumentsScope arguments ) {
 		String expression = arguments.getAsString( expressionKey );
 
-		return ExpressionInterpreter.getVariable( context, expression, false );
+		return runtime.executeStatement( expression, context );
 	}
 
 }
