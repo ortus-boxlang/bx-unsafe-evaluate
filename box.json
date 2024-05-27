@@ -1,7 +1,6 @@
 {
 	"name": "Unsafe Evaluate",
 	"version": "@build.version@+@build.number@",
-	"unlisted": true,
 	"location": "https://downloads.ortussolutions.com/ortussolutions/boxlang-modules/bx-unsafe-evaluate/@build.version@/bx-unsafe-evaluate-@build.version@.zip",
 	"author": "Ortus Solutions",
 	"homepage": "https://github.com/ortus-boxlang/bx-unsafe-evaluate",
