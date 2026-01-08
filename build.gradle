@@ -137,16 +137,20 @@ spotless {
  * - Copies the src/main/bx/** to build/module/ folder.
  */
 task createModuleStructure(type: Copy) {
+    dependsOn jar
     from( 'build/libs' ) {
-		include "${project.name}-${version}-all.jar"
+		// Note: I have no idea why gradle still adds the -all to the .jar in this directory
+		include "${project.name}-${version}.jar"
         into 'libs'
     }
     from( 'src/main/bx' ) {
 		include '**/*.bx'
+		include '**/*.cfc'
+		include '**/*.cfm'
 		// Token Replacements Go Here
 		filter{ line -> line.replaceAll( '@build.version@', project.version ) }
 		if( project.branch == "development" ){
-			filter{ line -> line.replaceAll( '\\+@build.number@', '-SNAPSHOT' ) }
+			filter{ line -> line.replaceAll( '\\+@build.number@', '' ) }
 		} else {
 			filter{ line -> line.replaceAll( '@build.number@', project.buildID ) }
 		}
@@ -158,7 +162,7 @@ task createModuleStructure(type: Copy) {
 		// Token Replacements Go Here
 		filter{ line -> line.replaceAll( '@build.version@', project.version ) }
 		if( project.branch == "development" ){
-			filter{ line -> line.replaceAll( '\\+@build.number@', '-SNAPSHOT' ) }
+			filter{ line -> line.replaceAll( '\\+@build.number@', '' ) }
 		} else {
 			filter{ line -> line.replaceAll( '@build.number@', project.buildID ) }
 		}
