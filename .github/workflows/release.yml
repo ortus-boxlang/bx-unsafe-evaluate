@@ -192,7 +192,7 @@ jobs:
           ref: development
 
       - name: Checkout LTS Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         if: env.LTS == 'true'
 
       - name: Setup Gradle
