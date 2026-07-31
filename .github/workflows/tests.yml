@@ -31,7 +31,7 @@ jobs:
           #  experimental: true
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -42,7 +42,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v3
         with:
-          gradle-version: "8.7"
+          gradle-version: "8.12"
 
       # - name: Setup Database and Fixtures
       #   run: |

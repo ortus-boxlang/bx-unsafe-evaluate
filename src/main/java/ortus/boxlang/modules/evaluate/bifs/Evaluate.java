@@ -1,5 +1,6 @@
 package ortus.boxlang.modules.evaluate.bifs;
 
+import ortus.boxlang.compiler.parser.BoxSourceType;
 import ortus.boxlang.runtime.bifs.BIF;
 import ortus.boxlang.runtime.bifs.BoxBIF;
 import ortus.boxlang.runtime.context.IBoxContext;
@@ -36,9 +37,18 @@ public class Evaluate extends BIF {
 	 * @return Returns the result of evaluating the rightmost expression.
 	 */
 	public Object _invoke( IBoxContext context, ArgumentsScope arguments ) {
-		String expression = arguments.getAsString( expressionKey );
-
-		return runtime.executeStatement( expression, context );
+		String			expression		= arguments.getAsString( expressionKey );
+		var				resolvedPath	= context.findClosestTemplate();
+		BoxSourceType	sourceType		= BoxSourceType.BOXSCRIPT;
+		// We need to know if this was called from a CFML file to set the source type correctly
+		// otherwise. the CF transpiler won't kick in. We don't have access to the IRunnable so we have to look at the file name
+		if ( resolvedPath != null && resolvedPath.absolutePath() != null ) {
+			String path = resolvedPath.absolutePath().toString().toLowerCase();
+			if ( path.endsWith( ".cfm" ) || path.endsWith( ".cfc" ) || path.endsWith( ".cfs" ) ) {
+				sourceType = BoxSourceType.CFSCRIPT;
+			}
+		}
+		return runtime.executeStatement( expression, context, sourceType );
 	}
 
 }
