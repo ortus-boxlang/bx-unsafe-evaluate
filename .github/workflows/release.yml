@@ -179,6 +179,8 @@ jobs:
     if: github.ref != 'refs/heads/development'
     runs-on: ubuntu-latest
     needs: [build]
+    env:
+      LTS: ${{ inputs.LTS || 'false' }}
     permissions:
       checks: write
       pull-requests: write
@@ -187,7 +189,7 @@ jobs:
     steps:
       - name: Checkout Development Repository
         uses: actions/checkout@v5
-        if: env.LTS == 'false'
+        if: env.LTS != 'true'
         with:
           ref: development
 
@@ -212,7 +214,7 @@ jobs:
 
       - name: Bump Version
         run: |
-          if [ $LTS == 'true' ]
+          if [ "$LTS" = 'true' ]
           then
             gradle bumpPatchVersion --stacktrace --console=plain
           else
