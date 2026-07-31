@@ -11,10 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.1.0] - 2026-07-31
 
+## [1.1.0] - 2026-07-31
+
 ## [1.0.0] - 2024-06-13
 
 - First iteration of this module
 
 [unreleased]: https://github.com/ortus-boxlang/bx-unsafe-evaluate/compare/v1.1.0...HEAD
-[1.1.0]: https://github.com/ortus-boxlang/bx-unsafe-evaluate/compare/v1.0.0...v1.1.0
+[1.1.0]: https://github.com/ortus-boxlang/bx-unsafe-evaluate/compare/v1.1.0...v1.1.0
 [1.0.0]: https://github.com/ortus-boxlang/bx-unsafe-evaluate/compare/521047b43806d0dc690310f7ec51b24be68c9755...v1.0.0
