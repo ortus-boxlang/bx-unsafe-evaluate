@@ -5,6 +5,9 @@ build/**
 ### IntelliJ IDEA ###
 .idea/
 
+### Docs
+docs/**
+
 ### Mac OS ###
 .DS_Store
 
