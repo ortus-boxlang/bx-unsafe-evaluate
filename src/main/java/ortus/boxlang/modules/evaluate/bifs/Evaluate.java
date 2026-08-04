@@ -11,15 +11,13 @@ import ortus.boxlang.runtime.types.Argument;
 @BoxBIF
 public class Evaluate extends BIF {
 
-	private static final Key expressionKey = Key.of( "expression" );
-
 	/**
 	 * Constructor
 	 */
 	public Evaluate() {
 		super();
 		declaredArguments = new Argument[] {
-		    new Argument( true, Argument.STRING, expressionKey )
+		    new Argument( true, Argument.STRING, Key.expression )
 		};
 	}
 
@@ -37,7 +35,19 @@ public class Evaluate extends BIF {
 	 * @return Returns the result of evaluating the rightmost expression.
 	 */
 	public Object _invoke( IBoxContext context, ArgumentsScope arguments ) {
-		String			expression		= arguments.getAsString( expressionKey );
+		String			expression	= arguments.getAsString( Key.expression );
+		BoxSourceType	sourceType	= getSourceType( context );
+		return runtime.executeStatement( expression, context, sourceType );
+	}
+
+	/**
+	 * Determines the source type for an evaluation based on the closest template in the context.
+	 *
+	 * @param context The context in which the BIF is being invoked.
+	 *
+	 * @return The source type to use when evaluating the expression.
+	 */
+	public static BoxSourceType getSourceType( IBoxContext context ) {
 		var				resolvedPath	= context.findClosestTemplate();
 		BoxSourceType	sourceType		= BoxSourceType.BOXSCRIPT;
 		// We need to know if this was called from a CFML file to set the source type correctly
@@ -48,7 +58,7 @@ public class Evaluate extends BIF {
 				sourceType = BoxSourceType.CFSCRIPT;
 			}
 		}
-		return runtime.executeStatement( expression, context, sourceType );
+		return sourceType;
 	}
 
 }

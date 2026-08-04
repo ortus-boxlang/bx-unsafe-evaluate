@@ -16,9 +16,9 @@
 
 <p>&nbsp;</p>
 
-This module implements the `evaluate()` function for usage in your applications.  Please note that this UNSAFE function can be a security risk if not used properly.  Please use with caution.
+This module implements the `evaluate()` and `precisionEvaluate()` functions for usage in your applications.  Please note that these UNSAFE functions can be a security risk if not used properly.  Please use with caution.
 
-> We have provided this function for those that need to evaluate dynamic code in their applications.  This function is not recommended for general usage and should be used with caution.
+> We have provided these functions for those that need to evaluate dynamic code in their applications.  These functions are not recommended for general usage and should be used with caution.
 
 
 ## Ortus Sponsors
